@@ -36,9 +36,7 @@ const updateOne = (burgerType) => {
     });
 };
 
-let b= 'Big-mac';
-updateOne(b);
 
-module.exports = updateOne;
-module.exports = selectAll;
-module.exports = insertOne;
+exports.selectAll = selectAll;
+exports.insertOne = insertOne;
+exports.updateOne = updateOne;
