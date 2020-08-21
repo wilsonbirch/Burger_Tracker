@@ -1,14 +1,25 @@
 const orm = require('../config/orm.js');
 
-//Show all burgers currently input
-const selectAll = orm.selectAll()
+const burgers = {
+    all: (cb) => {
+        orm.all("burgers", (res) => {
+            cb(res);
+        });
+    },
 
-//Update one burger to "eaten"
-const updateOne = orm.updateOne()
+    insert: (burgerType, cb) => {
+        orm.insert(burgerType, (res) => {
+            cb(res);
+        })
+    },
 
-//add a new burger to the db
-const insertOne = orm.insertOne()
+    update: (burgerType, cb) => {
+        orm.update(burgerType, (res) => {
+            cb(res);
+        });
+    },
+};
 
-exports.selectAll = selectAll;
-exports.insertOne = insertOne;
-exports.updateOne = updateOne;
+burgers.insert("smokey burger");
+
+module.exports = burgers;

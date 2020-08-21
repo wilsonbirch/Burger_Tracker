@@ -2,41 +2,43 @@ const connection = require('./connection');
 const cTable = require('console.table');
 let burgerType;
 
-const selectAll = () => {
-    connection.query('SELECT * FROM burgers', (err, rows) => {
-        if (err) throw err;
-        console.table(rows);
-    }); 
-    connection.end();
-}
-
-const insertOne = (burgerType) =>  {
-    burgerType = JSON.stringify(burgerType);
-    connection.query('INSERT INTO burgers (burger_name, devoured) VALUES( ' + burgerType +', 0);', (err,row) => {
-        if (err) throw err;
-
-        connection.query('SELECT * FROM burgers', (err, rows) => {
-            if (err) throw err;
-            console.table(rows);
-        }); 
-        connection.end();
-    });
-}
-
-const updateOne = (burgerType) => {
-    burgerType = JSON.stringify(burgerType);
-    connection.query('UPDATE burgers set devoured = NOT devoured where burger_name = '+ burgerType +';', (err, row) =>{
-        if (err) throw err;
-
-        connection.query('SELECT * FROM burgers', (err, rows) => {
-            if (err) throw err;
-            console.table(rows);
-        }); 
-        connection.end();
-    });
+const orm = {
+    all: (tableInput, cb)=> {
+        const queryString = 'SELECT * FROM ??;';
+        connection.query(
+            queryString,
+            [tableInput],
+            (err, result) => {
+                if (err) throw err;
+                console.table(result);
+            }
+        ); 
+        connection.end()
+    },
+    insert: (burgerType, cb) =>  {
+        const queryString = 'INSERT INTO burgers (burger_name, devoured) VALUES(??, 0);';
+        connection.query(
+            queryString,
+            [burgerType],
+            (err, result) => {
+                if (err) throw err;
+                console.table(result);
+            }
+        ); 
+        connection.end()
+    },
+    update: (burgerType, cb) =>  {
+        const queryString = 'UPDATE burgers set devoured = NOT devoured where burger_name = ??;';
+        connection.query(
+            queryString,
+            [burgerType],
+            (err, result) => {
+                if (err) throw err;
+                console.table(result);
+            }
+        );
+        connection.end()
+    }
 };
 
-
-exports.selectAll = selectAll;
-exports.insertOne = insertOne;
-exports.updateOne = updateOne;
+module.exports = orm;
