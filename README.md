@@ -2,7 +2,7 @@
 Homework project # 12 for the carleton university coding bootcamp. Use express, handlebars and mySQL to build can "GET" "POST" and "UPDATE" to a database while localy and hosting to a JAWSDB on heroku. Below are the instructions that were followed to complete this application as well as a screenshot of the deployed application: 
 
 
-![Screenshot of deployed application](public\img\burgers!.png)
+![Screenshot of deployed application](public/img/burgers!.png)
 
 # Node Express Handlebars
 
