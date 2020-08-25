@@ -10,34 +10,35 @@ const orm = {
             [tableInput],
             (err, result) => {
                 if (err) throw err;
-                console.table(result);
+                cb(result);
+
             }
         ); 
-        connection.end()
+
     },
     insert: (burgerType, cb) =>  {
-        const queryString = 'INSERT INTO burgers (burger_name, devoured) VALUES(??, 0);';
-        connection.query(
-            queryString,
-            [burgerType],
-            (err, result) => {
+        var queryString = "INSERT INTO burgers (burger_name, devoured) VALUES(";
+        
+        queryString += JSON.stringify(burgerType);
+        queryString += ", 0);";
+        connection.query(queryString, (err, result) => {
                 if (err) throw err;
-                console.table(result);
+                cb(result);
+                
             }
         ); 
-        connection.end()
+
     },
+
     update: (burgerType, cb) =>  {
-        const queryString = 'UPDATE burgers set devoured = NOT devoured where burger_name = ??;';
-        connection.query(
-            queryString,
-            [burgerType],
-            (err, result) => {
+        var queryString = "UPDATE burgers set devoured = NOT devoured where burger_name = ";
+        queryString += JSON.stringify(burgerType);
+        connection.query( queryString, (err, result) => {
                 if (err) throw err;
-                console.table(result);
+                cb(result);
             }
         );
-        connection.end()
+
     }
 };
 

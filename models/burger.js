@@ -15,11 +15,11 @@ const burgers = {
 
     update: (burgerType, cb) => {
         orm.update(burgerType, (res) => {
-            cb(res);
+            cb = (res);
         });
     },
 };
 
-burgers.insert("smokey burger");
+//burgers.insert("smokey burger");
 
 module.exports = burgers;
