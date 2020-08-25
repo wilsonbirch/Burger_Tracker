@@ -20,11 +20,10 @@ $(function() {
   
       let burger_name = $("#ca").val().trim();
      
-  
       // Send the POST request.
       $.ajax("/api/burgers", {
         type: "POST",
-        data: burger_name
+        data: {"newBurger":burger_name}
       }).then(
         function() {
           console.log("added new burger");

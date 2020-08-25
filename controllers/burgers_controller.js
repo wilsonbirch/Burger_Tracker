@@ -16,12 +16,12 @@ router.get("/", (req, res) => {
 });
 
 router.post("/api/burgers/", (req, res) => {
-    let burger_name = req.body.name;
-    console.log(burger_name);
-    //burger.insert(req.body.burger_name, function(result) {
-        // Send back the ID of the new burger
-        //res.json({ id: result.insertId });
-      //});
+    let burger_name = req.body.newBurger;
+
+    burger.insert(burger_name, function(result) {
+        //Send back the ID of the new burger
+        res.status(200).end();
+      });
 });
 
 router.put("/api/burgers/:burger_name", (req, res) => {

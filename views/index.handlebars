@@ -1,36 +1,53 @@
-<h1>Burgers!</h1>
 
-<h2>Burgers to Eat:</h2>
+<div class = "row">
+  <div class = "col">
+    <h1 id = "mainTitle"> Burgers!</h1>
+    <img src="img/burger_vector.svg" class = "center" alt="Burgers!">
+  </div>
+</div>
 
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      {{> burgers/burgers-block devoured=false}}
-    {{/unless}}
-  {{/each}}
-</ul>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-6" id = "burgerColumn">
+    <h2  id = "subtitle">Burgers to Eat:</h2>
 
-<h2>Burgers that have been eaten:</h2>
-
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-    <li>
-        {{id}}. 
-
-	    {{burger_name}};
-    </li>
-    {{/if}}
-  {{/each}}
-</ul>
-
-<h2>Add a Burger</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="ca">Burger Name:</label>
-    <input type="text" id="ca" name="name">
+    <ul style="list-style-type:none;">
+      {{#each burgers}}
+        {{#unless devoured}}
+          {{> burgers/burgers-block devoured=false}}
+        {{/unless}}
+      {{/each}}
+    </ul>
   </div>
 
-  <button type="submit">Add a Burger</button>
-</form>
+    <div class = "col-6" id = "burgerColumn">
+      <h2  >Burgers that have been eaten:</h2>
+      <ul style="list-style-type:none;">
+        {{#each burgers}}
+          {{#if devoured}}
+          <li>
+              {{id}}. 
+
+            {{burger_name}};
+          </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class = "col" id = "submission">
+      <h2>Add a Burger</h2>
+      <form class="create-form">
+
+        <div class="form-group">
+          <label for="ca">Burger Name:</label>
+          <input type="text" id="ca" name="name">
+        </div>
+
+        <button class="btn btn-sm btn-light" type="submit">Add a Burger</button>
+      </form>
+    </div>
+  </div>
+</div>
