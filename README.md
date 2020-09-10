@@ -4,6 +4,8 @@ Homework project # 12 for the carleton university coding bootcamp. Use express, 
 
 ![Screenshot of deployed application](public/img/burgers!.png)
 
+The hosted app on Heroku can be found here: https://stark-tundra-94857.herokuapp.com/
+
 # Node Express Handlebars
 
 ### Overview
