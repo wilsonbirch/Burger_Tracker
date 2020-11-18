@@ -27,15 +27,14 @@ No special hardware or software is required to use this web app. All you need is
 
 ## Built With
 
-HTML
-CSS (including Foundation CSS framework)
-JavaScript
-console.table
-express
-MySQL
-CSS
-Handlebars
-body-parser
+- HTML
+- CSS 
+- JavaScript
+- console.table
+- express
+- MySQL
+- Handlebars
+- body-parser
 
 ## Author(s)
 
